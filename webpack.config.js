@@ -22,16 +22,30 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-          exclude: /node_modules/, //Não vai ler os node_modules
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader" // compiles Sass to CSS
-        }]
+        exclude: /node_modules/, //Não vai ler os node_modules
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
   plugins: [HTMLWebpackPluginConfig]
 };
+
+/*
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  // http://vuejs.github.io/vue-loader/workflow/production.html
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.optimize.OccurenceOrderPlugin()
+  ])
+}
+*/
