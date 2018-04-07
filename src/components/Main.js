@@ -10,7 +10,7 @@ import Schedule from './Schedule'
 // with /roster or /schedule. The / route will only match
 // when the pathname is exactly the string "/"
 const Main = () => (
-  <main>
+  <main className="content">
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path='/roster' component={Roster}/>

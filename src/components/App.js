@@ -1,13 +1,14 @@
 import React from 'react'
 import Header from './Header'
+import Navigation from './Navigation/Navigation'
 import Main from './Main'
 import Footer from './Footer'
 
-import './Home/Home.scss'
+import './Sass/Style.scss'
 
 const App = () => (
   <div>
-    <Header />
+    <Navigation />
     <Main />
     <Footer />
   </div>
