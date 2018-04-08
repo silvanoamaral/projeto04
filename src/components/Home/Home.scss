@@ -1,0 +1,27 @@
+.banner-home {
+    display: inline-block;
+    width: 100%;
+    height: 55vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    top: 78px;
+    text-shadow: 0 0 60px #000;
+    text-align: center;
+    color: #fff;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), 
+    url(https://cdn.morguefile.com/imageData/public/files/j/jschumacher/preview/fldr_2011_05_15/file8821305473845.jpg);
+
+    h1 {
+        color: #fff;
+        font-size: 250%;
+        line-height: 1em;
+        font-weight: 400;
+        @media only screen and (min-width: 480px) {
+          font-size: 300%;
+          margin: 0.7em 0;
+        }
+    }
+}
