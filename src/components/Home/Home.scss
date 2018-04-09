@@ -1,16 +1,17 @@
 .banner-home {
     display: inline-block;
-    width: 100%;
     height: 55vh;
+    
+    position: relative;
+    text-shadow: 0 0 60px #000;
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    position: relative;
-    top: 78px;
-    text-shadow: 0 0 60px #000;
-    text-align: center;
-    color: #fff;
     background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), 
     url(https://cdn.morguefile.com/imageData/public/files/j/jschumacher/preview/fldr_2011_05_15/file8821305473845.jpg);
 
@@ -23,5 +24,56 @@
           font-size: 300%;
           margin: 0.7em 0;
         }
+    }
+
+    p {
+        max-width: 900px;
+        font-size: 1.2em;
+        line-height: 1.4em;
+    }
+
+    @media (min-width: 700px) {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.technology {
+    min-height: 100vh;
+    background: #f3f3f3;
+    width: 100%;
+    padding-bottom: 1em;
+
+    /* Grid styles -------------------------------------------------*/
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 30px;
+        max-width: 960px;
+        margin: 0 auto 30px;
+
+        article {
+            position: relative;
+            overflow: hidden;
+
+            .article-img {
+                height: 200px;
+                width: 100%;
+                object-fit: cover;
+                background: #ccc;
+
+                &.hide {
+                    display: none;
+                }
+            }
+              
+            .article-title {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+        }         
     }
 }

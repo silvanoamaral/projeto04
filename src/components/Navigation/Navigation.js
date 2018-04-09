@@ -8,7 +8,7 @@ const Navigation = () => (
         <nav className="wrapper">
             <div className="logo"></div>
             <input type="checkbox" id="menu-toggle" />
-            <label for="menu-toggle" className="label-toggle"></label>
+            <label htmlFor="menu-toggle" className="label-toggle"></label>
             <ul>
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/roster'>Roster</Link></li>
