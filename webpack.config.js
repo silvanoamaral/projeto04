@@ -27,7 +27,12 @@ module.exports = {
       }
     ]
   },
-  plugins: [HTMLWebpackPluginConfig]
+  plugins: [HTMLWebpackPluginConfig],
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot: true
+  }
 };
 
 /*
