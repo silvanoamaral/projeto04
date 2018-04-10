@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home/Home'
+import Marvel from './Marvel/Marvel'
 import Roster from './Roster'
 import Schedule from './Schedule'
 
@@ -16,6 +17,7 @@ const Main = () => (
       <Route exact path='/projeto09' component={Home}/>
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
+      <Route path='/Marvel' component={Marvel}/>
     </Switch>
   </main>
 )
