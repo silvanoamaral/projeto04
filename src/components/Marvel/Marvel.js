@@ -9,7 +9,7 @@ class Marvel extends React.Component {
         super(props);
     
         this.state = {
-          marvel: [],
+          marvel: ['teste'],
         };
     }
    
@@ -19,19 +19,32 @@ class Marvel extends React.Component {
         const hash = md5.create()
         hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY)
 
-        const response = fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`)
-        .then(response => response.json())
-        .then(data => this.setState({ marvel: data.results }));
+        const results = fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`)
+        .then( (results) => {
+            return results.json();
+        }).then( data => {
+            const marvelJSON = data.data;
+            let listMarvel = marvelJSON.results.map((name) => {
+                return(
+                    <li key={name.id}>
+                        Name: {name.name}
+                        URL: <img src={name.thumbnail.path+".jpg"} />                       
+                    </li>                    
+                )
+            })
+            this.setState({marvel: listMarvel});
+        });
     } 
 
     render(){
-        const { marvel } = this.state;
+        const { marvel } = this.state;      
+
         return (
             <section>
                 <h2>Marvel</h2>
                 <p>Your public key: {PUBLIC_KEY}</p>
                 <p>Your private key: {PRIVATE_KEY}</p>
-                <p>Retorno: {marvel}</p>
+                <ul><span>Retorno:</span> {marvel}</ul>
             </section>
         )
     }
