@@ -4,7 +4,7 @@
 @import 'Reset.scss';
 @import './src/components/Home/Home.scss';
 @import './src/components/Navigation/Navigation.scss';
-
+@import './src/components/Marvel/Marvel.scss';
 
 body {
   background: #f9f9f9;
@@ -94,20 +94,30 @@ main {
   position: relative;
   margin-top: 77px;
 
+  .title {
+    display: inline-block;
+    font-weight: 200;
+    position: relative;
+    padding: 25px 0;
+    font-family: Roboto,sans-serif;
+    font-size: 34px;
+    text-transform: capitalize;
+    text-align: center;
+    width: 100%;     
+  }
+  
+  .container {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-gap: 30px;
+      max-width: 960px;
+      margin: 0 auto 30px;
+    }
+  }
+
   .content {    
     overflow: hidden;
-
-    .title {
-      display: inline-block;
-      font-weight: 200;
-      position: relative;
-      padding: 25px 0;
-      font-family: Roboto,sans-serif;
-      font-size: 34px;
-      text-transform: capitalize;
-      text-align: center;
-      width: 100%;     
-    } 
   }
 }
 footer {

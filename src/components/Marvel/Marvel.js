@@ -9,7 +9,7 @@ class Marvel extends React.Component {
         super(props);
     
         this.state = {
-          marvel: ['teste'],
+          marvel: [],
         };
     }
    
@@ -19,20 +19,28 @@ class Marvel extends React.Component {
         const hash = md5.create()
         hash.update(timestamp + PRIVATE_KEY + PUBLIC_KEY)
 
-        const results = fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=10&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`)
+        const limit = 10
+
+        /*
+            Exemplo
+            const comicts = 'https://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}'
+            const creators = 'https://gateway.marvel.com/v1/public/creators?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}'
+        */
+
+        const results = fetch(`https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&orderBy=name&limit=${limit}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`)
         .then( (results) => {
             return results.json();
         }).then( data => {
             const marvelJSON = data.data;
-            let listMarvel = marvelJSON.results.map((name) => {
+            let listMarvel = marvelJSON.results.map((obj) => {
                 return(
-                    <li key={name.id}>
-                        Name: {name.name}
-                        URL: <img src={name.thumbnail.path+".jpg"} />                       
+                    <li key={obj.id}>
+                        <img src={obj.thumbnail.path+".jpg"} />
+                        <label>{obj.name}</label>                                             
                     </li>                    
                 )
             })
-            this.setState({marvel: listMarvel});
+            this.setState({ marvel: listMarvel });
         });
     } 
 
@@ -41,10 +49,10 @@ class Marvel extends React.Component {
 
         return (
             <section>
-                <h2>Marvel</h2>
-                <p>Your public key: {PUBLIC_KEY}</p>
-                <p>Your private key: {PRIVATE_KEY}</p>
-                <ul><span>Retorno:</span> {marvel}</ul>
+                <div className="container">
+                    <h2 className="title">TOP MARVEL HEROES</h2>
+                    <ul className="marvel">{marvel}</ul>
+                </div>
             </section>
         )
     }

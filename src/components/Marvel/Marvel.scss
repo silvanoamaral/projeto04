@@ -1,0 +1,19 @@
+.marvel {
+    li {
+        max-height: 375px;
+        min-height: 375px;
+        margin-bottom: 3em;
+        
+        img {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            text-align: center;
+            margin: 2em 0 1em 0em;
+        }
+    }
+}
