@@ -1,0 +1,25 @@
+footer {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    background: #191919;
+    color: #303030;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    border-top: 10px solid #2B2B2B;
+
+    .copyright {
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            line-height: 24px;
+            a,
+            a:visited {
+                color: #525252;  
+            }
+        }
+    }
+}

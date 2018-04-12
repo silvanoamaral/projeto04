@@ -1,8 +1,7 @@
 import React from 'react'
-import Header from './Header'
 import Navigation from './Navigation/Navigation'
 import Main from './Main'
-import Footer from './Footer'
+import Footer from './Footer/Footer'
 
 import './Sass/Style.scss'
 

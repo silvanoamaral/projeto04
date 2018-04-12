@@ -3,8 +3,9 @@
 
 @import 'Reset.scss';
 @import './src/components/Home/Home.scss';
+@import './src/components/Footer/Footer.scss';
 @import './src/components/Navigation/Navigation.scss';
-@import './src/components/Marvel/Marvel.scss';
+@import './src/components/Marvel/Marvel.scss'; 
 
 body {
   background: #f9f9f9;
@@ -119,10 +120,4 @@ main {
   .content {    
     overflow: hidden;
   }
-}
-footer {
-  width: 100%;
-  min-height: 100px;
-  background: #ccc;
-  clear: both;
 }
