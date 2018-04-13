@@ -51,6 +51,6 @@
 
 * O comando `npm run build` irá executar o webpack, que vai olhar o arquivo de configuração e gerar o bundle.js, que contém todo o código da aplicação e das dependências.
 
-## Start
+## Rodando o projeto
 
-* O comando `npm run start` vai ficar observando os arquivos e reconstruir o bundle.js sempre que houver alguma alteração. Executando o mode development, rodando o server e abrindo no navedor o projeto [Link](http://localhost:8080/) 
+* Ao executar o comando `npm run start` vai rodar o server e abrir o projeto no browser com a URL:`http://localhost:8080/` [Link](http://localhost:8080/). Se houver algum ajuste/mudança no código fonte, o browser vai ter um reload e atualizar o projeto.
