@@ -49,7 +49,7 @@
 
 ## Generating the bundle.js
 
-* O comando `npm run build` executa o webpack, que vai olhar o arquivo de configuração `webpack.config.js` e gerar o bundle.js, que contém todo o código da aplicação e das dependências.
+* O comando `npm run build` executa o webpack, que olhar para o arquivo de configuração `webpack.config.js` e gerar o bundle.js, e ele que contém todo o código da aplicação e das dependências.
 
 ## Running the project
 
