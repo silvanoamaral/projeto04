@@ -49,8 +49,8 @@
 
 ## Generating the bundle.js
 
-* O comando `npm run build` irá executar o webpack, que vai olhar o arquivo de configuração e gerar o bundle.js, que contém todo o código da aplicação e das dependências.
+* O comando `npm run build` executa o webpack, que vai olhar o arquivo de configuração `webpack.config.js` e gerar o bundle.js, que contém todo o código da aplicação e das dependências.
 
 ## Running the project
 
-* Ao executar o comando `npm run start` vai rodar o server e abrir o projeto no browser com a url:`http://localhost:8080/` [Link](http://localhost:8080/).
+* Ao executar o comando `npm run start` roda o server e abre o browser com projeto na url:`http://localhost:8080/` [Link](http://localhost:8080/).
