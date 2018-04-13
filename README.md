@@ -47,10 +47,10 @@
 * Entre na pasta `cd projeto09`;
 * Digite o comando `npm install` para instalar as dependências.
 
-## Gerando o bundle
+## Generating the bundle.js
 
 * O comando `npm run build` irá executar o webpack, que vai olhar o arquivo de configuração e gerar o bundle.js, que contém todo o código da aplicação e das dependências.
 
-## Rodando o projeto
+## Running the project
 
-* Ao executar o comando `npm run start` vai rodar o server e abrir o projeto no browser com a URL:`http://localhost:8080/` [Link](http://localhost:8080/). Se houver algum ajuste/mudança no código fonte, o browser vai ter um reload e atualizar o projeto.
+* Ao executar o comando `npm run start` vai rodar o server e abrir o projeto no browser com a url:`http://localhost:8080/` [Link](http://localhost:8080/).
