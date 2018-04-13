@@ -18,6 +18,9 @@ const Main = () => (
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       <Route path='/Marvel' component={Marvel}/>
+      <Route render={function () {
+        return <p>Not Found</p> 
+      }} />
     </Switch>
   </main>
 )

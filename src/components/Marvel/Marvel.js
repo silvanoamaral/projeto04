@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import md5 from 'js-md5'
+import { Loading } from '../Loading/Loading'
 
 const PUBLIC_KEY = '0e8154dafc6b9c27e6506450a4c3a474'
 const PRIVATE_KEY = '02a8e5a15ef04f3468f5e03feef98fd145a8cdcc'
@@ -9,7 +10,7 @@ class Marvel extends React.Component {
         super(props);
     
         this.state = {
-          marvel: [],
+          marvel: null,
         };
     }
    
@@ -51,7 +52,11 @@ class Marvel extends React.Component {
             <section>
                 <div className="container">
                     <h2 className="title">TOP MARVEL HEROES</h2>
-                    <ul className="marvel">{marvel}</ul>
+                    <ul className="marvel">
+                        {!this.state.marvel
+                            ? <Loading />
+                            : {marvel}}
+                    </ul>
                 </div>
             </section>
         )

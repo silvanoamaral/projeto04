@@ -1,6 +1,7 @@
 const path = require("path");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({ template: 'index.html' });
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({ template: 'index.html' });
+const webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -9,7 +10,8 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].js"
+    filename: "js/[name].js",
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -29,11 +31,20 @@ module.exports = {
   },
   plugins: [HTMLWebpackPluginConfig],
   devServer: {
-    historyApiFallback: true,
-    contentBase: './',
-    hot: true
+    historyApiFallback: true
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+  )
+}
 
 /*
 if (process.env.NODE_ENV === 'production') {
