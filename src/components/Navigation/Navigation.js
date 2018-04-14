@@ -10,10 +10,10 @@ const Navigation = () => (
             <input type="checkbox" id="menu-toggle" />
             <label htmlFor="menu-toggle" className="label-toggle"></label>
             <ul>
-                <li><Link activeClassName='active' to='/'>Home</Link></li>
-                <li><Link activeClassName='active' to='/Marvel'>Marvel</Link></li>
-                <li><Link activeClassName='active' to='/roster'>Roster</Link></li>
-                <li><Link activeClassName='active' to='/schedule'>Schedule</Link></li>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to='/Marvel'>Marvel</Link></li>
+                <li><Link to='/roster'>Roster</Link></li>
+                <li><Link to='/schedule'>Schedule</Link></li>
             </ul>
         </nav>
     </nav>
