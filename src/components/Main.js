@@ -1,9 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+
 import Home from './Home/Home'
 import Marvel from './Marvel/Marvel'
 import Roster from './Roster'
 import Schedule from './Schedule'
+import Erro from './Erros/NotFounds'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -18,9 +20,7 @@ const Main = () => (
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       <Route path='/Marvel' component={Marvel}/>
-      <Route render={function () {
-        return <p>Not Found</p> 
-      }} />
+      <Route path="*" component={Erro}/>
     </Switch>
   </main>
 )
