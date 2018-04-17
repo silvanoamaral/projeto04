@@ -12,7 +12,7 @@ const Footer = () => (
         <li><a href=""><i className="fa fa-docker"></i></a></li>        
       </ul>
       <ul className="copyright">
-        <li>This site is developed in React.js by Silvano Amaral
+        <li>This site is developed in React.js by Silvano Amaral 
         </li>
       </ul>
     </div>

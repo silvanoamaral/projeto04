@@ -4,9 +4,9 @@
 
 ## GitHub Pages
 
-[Link](https://silvanoamaral.github.io/projeto09/)
+Go [here](https://silvanoamaral.github.io/projeto09/) for live demo.
 
-## We are using in the project 
+## Developed With
 
 * HTML
 * CSS / SASS
@@ -40,6 +40,10 @@
 * `package.json` defines our dependencies
 * `src/sass/main.scss` is our scss / sass entry point
 * `webpack.config.js` is our config that tells webpack what to do
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Installation of the project
 
