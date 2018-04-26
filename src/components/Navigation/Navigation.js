@@ -17,6 +17,7 @@ const Navigation = () => (
             <ul>
                 <li><Link to='/' onClick={() => hideNavigationMobile() }>Home</Link></li>
                 <li><Link to='/Marvel' onClick={() => hideNavigationMobile() }>Marvel</Link></li>
+                <li><Link to='/Contact' onClick={() => hideNavigationMobile() }>Contact</Link></li>
                 <li><Link to='/roster' onClick={() => hideNavigationMobile() }>Roster</Link></li>
                 <li><Link to='/schedule' onClick={() => hideNavigationMobile() }>Schedule</Link></li>
             </ul>

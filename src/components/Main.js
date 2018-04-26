@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import Home from './Home/Home'
 import Marvel from './Marvel/Marvel'
+import Contact from './ContactForm/ContactForm'
 import Roster from './Roster'
 import Schedule from './Schedule'
 import Erro from './Erros/NotFounds'
@@ -20,6 +21,7 @@ const Main = () => (
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       <Route path='/Marvel' component={Marvel}/>
+      <Route path='/Contact' component={Contact}/>
       <Route path="*" component={Erro}/>
     </Switch>
   </main>
