@@ -20,8 +20,8 @@ const Main = () => (
       <Route exact path='/projeto09' component={Home}/>
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
-      <Route path='/Marvel' component={Marvel}/>
-      <Route path='/Contact' component={Contact}/>
+      <Route path='/marvel' component={Marvel}/>
+      <Route path='/contact' component={Contact}/>
       <Route path="*" component={Erro}/>
     </Switch>
   </main>
