@@ -1,6 +1,6 @@
 ## Portfolio Website
 
-* Portfolio to demonstrate jobs; teste
+* Portfolio to demonstrate jobs;
 
 ## GitHub Pages
 
