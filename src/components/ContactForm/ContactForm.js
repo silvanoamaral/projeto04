@@ -1,37 +1,81 @@
 import React, { Component } from 'react'
 
+const required = fieldValue => fieldValue ? undefined : "Please enter a value";
+const lessThanValue = value => fieldValue =>
+  fieldValue < value ? undefined : `Value must be less than ${value}`;
+
+const greaterThanField = (fieldName) => (fieldValue,state) =>
+  fieldValue > state[fieldName] ? undefined : `Value must be greater that ${fieldName}`;
+
 class ContactForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fullname: "",
-            emailaddress: "",
-            password: "",
-            editor: "",
-            message: "",
-            terms: false,
-            test: ""
+            email: '',
+            fullname: '',
+            formErrors: {email: '', fullname: ''},
+            emailValid: false,
+            nameValid: false,
+            formValid: false,
+            error:{}
         };
     
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }    
+    }
 
     //é executado em todas as teclas para atualizar o estado React, 
     //o valor exibido será atualizado conforme o usuário digita.
     handleChange(event) {
         const target = event.target;
-        const value = target.type === "checkbox" ? target.checked : target.value;
-        const name = target.name;
+        const fieldValue = target.type === "checkbox" ? target.checked : target.value;
+        const fieldName = target.name;
+        
+        //let statusCopy = Object.assign({}, this.state);
+        //statusCopy.form[fieldName] = fieldValue;
 
-        this.setState({
-            [name]: value
-        });
+        this.setState(
+            { [fieldName]: fieldValue },
+            () => {
+                this.validateField(fieldName, fieldValue) 
+            }
+        );
+    }
+    
+    validateField (fieldName,fieldValue) {
+        let fieldValidationErrors = this.state.formErrors;
+        let emailValid = this.state.emailValid;
+        let nameValid = this.state.nameValid;
+      
+        switch(fieldName) {
+          case 'email':
+            emailValid = fieldValue.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+            fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+            break;
+          case 'fullname':
+            nameValid = fieldValue.length >= 6;
+            fieldValidationErrors.fullname = nameValid ? '': ' is too short';
+            break;
+          default:
+            break;
+        }
+        this.setState({formErrors: fieldValidationErrors,
+            emailValid: emailValid,
+            nameValid: nameValid
+        }, this.validateForm);
+    }
+
+    validateForm() {
+        this.setState({formValid: this.state.emailValid && this.state.nameValid});
     }
 
     handleSubmit(event) {        
         event.preventDefault();
-        console.log(this.state);
+        if(this.state.formValid){
+            console.log('Formulário com campos validado.',this.state);
+        }else{
+            console.log('Formulário com erro.',this.state);
+        }
     }
 
     render() {
@@ -42,10 +86,11 @@ class ContactForm extends React.Component {
                     <div className="field">
                         <label htmlFor="fullname">Name:</label>
                         <input type="text" name="fullname" value={this.state.fullname} onChange={this.handleChange} />
+                        <span className="error-message">{this.state.formErrors.fullname}</span>
                     </div>
                     <div className="field">
-                        <label htmlFor="emailaddress">Email:</label>
-                        <input type="email" name="emailaddress" value={this.state.email} onChange={this.handleChange} />
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
                     </div>
                     <div className="field">
                         <label htmlFor="message">Message:</label>
