@@ -91,6 +91,7 @@ class ContactForm extends React.Component {
                     <div className="field">
                         <label htmlFor="email">Email:</label>
                         <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        <span className="error-message">{this.state.formErrors.email}</span>
                     </div>
                     <div className="field">
                         <label htmlFor="message">Message:</label>
