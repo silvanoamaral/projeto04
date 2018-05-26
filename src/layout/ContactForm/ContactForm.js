@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import InputCustomizado from '../.././components/InputCustomizado/InputCustomizado'
+
+
 const required = fieldValue => fieldValue ? undefined : "Please enter a value";
 const lessThanValue = value => fieldValue =>
   fieldValue < value ? undefined : `Value must be less than ${value}`;
@@ -83,16 +86,9 @@ class ContactForm extends React.Component {
             <section>
                 <h2 className="title">Contact</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="field">
-                        <label htmlFor="fullname">Name:</label>
-                        <input type="text" name="fullname" value={this.state.fullname} onChange={this.handleChange} />
-                        <span className="error-message">{this.state.formErrors.fullname}</span>
-                    </div>
-                    <div className="field">
-                        <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} />
-                        <span className="error-message">{this.state.formErrors.email}</span>
-                    </div>
+                    <InputCustomizado type="text" id="fullname" name="fullname" label="Name" value={this.state.fullname} data={this.state.formErrors.fullname} onChange={this.handleChange} />                    
+                    <InputCustomizado type="email" id="email" name="email" label="Email" value={this.state.email} data={this.state.formErrors.email} onChange={this.handleChange} />
+                                        
                     <div className="field">
                         <label htmlFor="message">Message:</label>
                         <textarea name="message" value={this.state.message} onChange={this.handleChange} />

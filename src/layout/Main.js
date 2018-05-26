@@ -6,7 +6,7 @@ import Marvel from './Marvel/Marvel'
 import Contact from './ContactForm/ContactForm'
 import Roster from './Roster'
 import Schedule from './Schedule'
-import Erro from './Erros/NotFounds'
+import Erro from '../components/Erros/NotFounds'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster

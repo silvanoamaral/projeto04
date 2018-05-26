@@ -3,11 +3,11 @@
 
 @import 'Reset.scss';
 @import 'setting.scss';
-@import './src/components/Home/Home.scss';
-@import './src/components/Footer/Footer.scss';
-@import './src/components/Navigation/Navigation.scss';
-@import './src/components/Marvel/Marvel.scss'; 
-@import './src/components/ContactForm/ContactForm.scss'; 
+@import './src/layout/Home/Home.scss';
+@import './src/layout/Footer/Footer.scss';
+@import './src/layout/Navigation/Navigation.scss';
+@import './src/layout/Marvel/Marvel.scss'; 
+@import './src/layout/ContactForm/ContactForm.scss'; 
 
 body {
   background: #f9f9f9;
