@@ -4,9 +4,12 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './Home/Home'
 import Marvel from './Marvel/Marvel'
 import Contact from './ContactForm/ContactForm'
+import TheMovie from './TheMovie/TheMovie'
+import Erro from '../components/Erros/NotFounds'
+
 import Roster from './Roster'
 import Schedule from './Schedule'
-import Erro from '../components/Erros/NotFounds'
+
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -21,7 +24,8 @@ const Main = () => (
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       <Route path='/marvel' component={Marvel}/>
-      <Route path='/contact' component={Contact}/>
+      <Route path='/contact' component={Contact} />
+      <Route path='/themovie' component={TheMovie} />
       <Route path="*" component={Erro}/>
     </Switch>
   </main>

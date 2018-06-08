@@ -9,6 +9,6 @@ export default class InputCustomizado extends Component {
                 <input id={this.props.id} type={this.props.type} name={this.props.name} value={this.props.value} onChange={this.props.onChange} />
                 <span className="error-message">{this.props.data}</span>
             </div>
-      );
+        );
     }
 }

@@ -20,6 +20,7 @@ const Navigation = () => (
                 <li><Link to='/contact' onClick={() => hideNavigationMobile() }>Contact</Link></li>
                 <li><Link to='/roster' onClick={() => hideNavigationMobile() }>Roster</Link></li>
                 <li><Link to='/schedule' onClick={() => hideNavigationMobile() }>Schedule</Link></li>
+                <li><Link to='/themovie' onClick={() => hideNavigationMobile() }>The Movie</Link></li>                
             </ul>
         </nav>
     </nav>
