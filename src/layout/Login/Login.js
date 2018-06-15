@@ -15,19 +15,21 @@ export default class Login extends Component {
     envia(event){
         event.preventDefault();
 
-        //Referencia para entender o Responsi: https://developer.mozilla.org/pt-BR/docs/Web/API/Response
+        //Referencia para entender o Response: https://developer.mozilla.org/pt-BR/docs/Web/API/Response
         
         const requestInfo = {
             method:'POST',
-            body:JSON.stringify({login:this.login.value,senha:this.senha.value}),
+            body:JSON.stringify({name:this.login.value,pass:this.senha.value}),
             headers: new Headers({
                 'Content-type':'application/json'
             })
         };
 
-        fetch('http://localhost:8080/api/public/login',requestInfo)
+        fetch('http://demo5054509.mockable.io/login',requestInfo)
         .then(response => {
+            console.log(response);
             if(response.ok){
+                
                 return response.text();
             } else {
                 throw new Error('Não foi possível fazer o login');
