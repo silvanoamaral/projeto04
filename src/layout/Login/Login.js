@@ -54,13 +54,44 @@ export default class Login extends Component {
         });
     }
 
+    enviarMocks(event) {
+        event.preventDefault();
+        console.log("name:",this.login.value,"pass:",this.senha.value);
+
+        fetch('http://demo5054509.mockable.io/login',{
+            method: 'get' //metodo opcional
+        })
+        .then(response => {
+            if(response.ok){
+                response.json()
+                .then(users => {
+                    console.log(users);
+                    //this.props.history.replace('/');
+                })
+                //return response.text();
+                //https://braziljs.org/blog/fetch-api-e-o-javascript/
+            } else {
+                throw new Error('Não foi possível fazer o login');
+                /*
+                    Ao lançarmos a exception, o fluxo do then() será interrompido. 
+                    Porém ainda queremos que a mensagem seja recebida pelo usuário, por isso, 
+                    na Promise teremos o método catch().
+                */
+            }
+        })
+        .catch(error => {
+            this.setState({msg:error.message});
+        });
+
+    }
+
     render() {
         return (
             <div className="grid-login">
                 <div className="login-box">
-                <h1 className="header-logo">Instalura</h1>
+                <h1 className="header-logo">Login</h1>
                 <span>{ this.state.msg }</span>
-                <form onSubmit={ this.envia.bind(this) }>
+                <form onSubmit={ this.enviarMocks.bind(this) } >
                         <input type="text" ref={ (input) => this.login = input } />
                         <input type="password" ref={ (input) => this.senha = input } />
                         <input type="submit" value="login"/>
