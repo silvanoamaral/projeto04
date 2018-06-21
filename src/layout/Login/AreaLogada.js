@@ -8,11 +8,9 @@ export default class Login extends Component {
     }
 
     componentDidMount(){
-        fetch('http://localhost:8080/api/fotos?X-AUTH-TOKEN=${localStorage.getItem("auth-token")')
-        .then(response => response.json())
-        .then(fotos => {
-            this.setState({fotos:fotos});
-        });
+        if(localStorage.getItem("auth-tokem") === null){
+            this.props.history.replace('/login');
+        }
     }
 
     render () {

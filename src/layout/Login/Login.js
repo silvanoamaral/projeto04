@@ -12,63 +12,19 @@ export default class Login extends Component {
         this.state = { msg: '' }
     }
 
-    envia(event){
-        event.preventDefault();
-
-        //Referencia para entender o Response: https://developer.mozilla.org/pt-BR/docs/Web/API/Response
-        
-        const requestInfo = {
-            method:'POST',
-            body:JSON.stringify({name:this.login.value,pass:this.senha.value}),
-            headers: new Headers({
-                'Content-type':'application/json'
-            })
-        };
-
-        fetch('http://demo5054509.mockable.io/login',requestInfo)
-        .then(response => {
-            console.log(response);
-            if(response.ok){
-                
-                return response.text();
-            } else {
-                throw new Error('Não foi possível fazer o login');
-                /*
-                    Ao lançarmos a exception, o fluxo do then() será interrompido. 
-                    Porém ainda queremos que a mensagem seja recebida pelo usuário, por isso, 
-                    na Promise teremos o método catch().
-                */
-            }
-        })
-        .then(token => {
-            localStorage.setItem('auth-tokem',token);
-
-            //E o browserHistory possui o método push(). 
-            //Nele, podemos especificar que queremos navegar para um endereço da aplicação, exemplo, /timeline.
-            browserHistory.push('/timeline');
-
-            console.log(token);
-        })
-        .catch(error => {
-            this.setState({msg:error.message});
-        });
+    componentDidMount(){
+        if(localStorage.getItem("auth-tokem") !== null){
+            this.props.history.replace('/area-restrita');
+        }
     }
 
-    enviarMocks(event) {
-        event.preventDefault();
-        console.log("name:",this.login.value,"pass:",this.senha.value);
-
-        fetch('http://demo5054509.mockable.io/login',{
+    consultarMocks () {
+        fetch('http://demo8863962.mockable.io/user',{
             method: 'get' //metodo opcional
         })
         .then(response => {
             if(response.ok){
-                response.json()
-                .then(users => {
-                    console.log(users);
-                    //this.props.history.replace('/');
-                })
-                //return response.text();
+                return response.json()
                 //https://braziljs.org/blog/fetch-api-e-o-javascript/
             } else {
                 throw new Error('Não foi possível fazer o login');
@@ -79,10 +35,40 @@ export default class Login extends Component {
                 */
             }
         })
+        .then(data => {            
+            const result = this.validarUsuario( data );
+
+            if( result ) {
+                //console.info('Sucesso, pode efeturar o login ;)');
+                localStorage.setItem('auth-tokem',result);
+                this.props.history.replace('/area-restrita');
+            } else {
+                this.setState({ msg:'Login e Senha Inválidos' });
+            }            
+        })
         .catch(error => {
             this.setState({msg:error.message});
         });
+    }
 
+    validarUsuario (data) {
+        return data.user.some(user => {
+            if(this.login.value === user.name && this.senha.value === user.pass){ 
+                return user.pass;                    
+            } 
+
+            return false;
+        });
+    }
+
+    enviarMocks(event) {
+        event.preventDefault();
+
+        if(this.login.value !== '' && this.senha.value) {
+            this.consultarMocks();
+        } else {
+            this.setState({ msg:'Login e Senha Inválidos' });
+        }
     }
 
     render() {
