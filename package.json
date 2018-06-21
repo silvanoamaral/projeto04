@@ -31,6 +31,7 @@
   "dependencies": {
     "css-loader": "^0.28.11",
     "js-md5": "^0.7.3",
+    "jwt-decode": "^2.2.0",
     "node-sass": "^4.8.3",
     "prop-types": "^15.6.1",
     "react": "^16.3.1",

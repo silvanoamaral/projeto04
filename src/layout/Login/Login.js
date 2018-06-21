@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
+import jwt_decode from 'jwt-decode'
 
 import './Login.scss'
 
 export default class Login extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         console.log(this.props);
         //this.state = { msg: this.props.location.query.msg }
         this.state = { msg: '' }
     }
 
-    componentDidMount(){
-        if(localStorage.getItem("auth-tokem") !== null){
+    componentDidMount() {
+        if(localStorage.getItem("auth-tokem") !== null) {
             this.props.history.replace('/area-restrita');
         }
     }
@@ -23,7 +24,7 @@ export default class Login extends Component {
             method: 'get' //metodo opcional
         })
         .then(response => {
-            if(response.ok){
+            if(response.ok) {
                 return response.json()
                 //https://braziljs.org/blog/fetch-api-e-o-javascript/
             } else {
@@ -35,27 +36,31 @@ export default class Login extends Component {
                 */
             }
         })
-        .then(data => {            
+        .then(data => {
             const result = this.validarUsuario( data );
 
             if( result ) {
                 //console.info('Sucesso, pode efeturar o login ;)');
-                localStorage.setItem('auth-tokem',result);
+                const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIiLCJleHAiOjEzOTMyODY4OTMsImlhdCI6MTM5MzI2ODg5M30.4-iaDojEVl0pJQMjrbM1EzUIfAZgsbK_kgnVyVxFSVo';
+                const decoded = jwt_decode(token);
+                console.log(decoded);
+
+                localStorage.setItem('auth-tokem',decoded);
                 this.props.history.replace('/area-restrita');
             } else {
                 this.setState({ msg:'Login e Senha Inválidos' });
-            }            
+            }
         })
         .catch(error => {
-            this.setState({msg:error.message});
+            this.setState({ msg:error.message });
         });
     }
 
     validarUsuario (data) {
         return data.user.some(user => {
-            if(this.login.value === user.name && this.senha.value === user.pass){ 
-                return user.pass;                    
-            } 
+            if(this.login.value === user.name && this.senha.value === user.pass) {
+                return user.name+user.pass;
+            }
 
             return false;
         });
@@ -75,9 +80,9 @@ export default class Login extends Component {
         return (
             <div className="grid-login">
                 <div className="login-box">
-                <h1 className="header-logo">Login</h1>
-                <span>{ this.state.msg }</span>
-                <form onSubmit={ this.enviarMocks.bind(this) } >
+                    <h1 className="header-logo">Login</h1>
+                    <span>{ this.state.msg }</span>
+                    <form onSubmit={ this.enviarMocks.bind(this) } >
                         <input type="text" ref={ (input) => this.login = input } />
                         <input type="password" ref={ (input) => this.senha = input } />
                         <input type="submit" value="login"/>
