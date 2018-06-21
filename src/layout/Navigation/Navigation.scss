@@ -23,10 +23,10 @@ nav {
       display: flex;
       justify-content: space-between;
       list-style-type: none;
-      width: 50%;
 
       li {
         display: inline-block;
+        padding-left: 20px;
 
         a {
           color: $color-link;
